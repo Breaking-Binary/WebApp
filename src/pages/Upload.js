@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "../components/Navbar";
 
 function SyllabusForm(props) {
 	const [manualData, setManualData] = useState(null);
@@ -94,6 +95,7 @@ function App() {
 
 	return (
 		<div>
+			<Navbar />
 			<h1>Syllabus Upload Form</h1>
 			<div>
 				<label>
