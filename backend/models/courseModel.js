@@ -1,34 +1,30 @@
 const mongoose = require("mongoose");
 
-const evaluationsSchema = new mongoose.Schema({
-  // course_ID: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Course",
-  //   required: true,
-  // },
-  name: {
-    type: String,
-    required: true,
-  },
-  weight: {
-    type: Number,
-    required: true,
-  },
-  grade: Number,
-  dueDate: {
-    type: Date,
-    required: true,
-  },
-});
-
 const courseSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     evaluations: {
-      type: [evaluationsSchema],
+      type: [
+        {
+          evaluationName: {
+            type: String,
+            required: true,
+          },
+          weight: {
+            type: Number,
+            required: true,
+          },
+          grade: Number,
+          dueDate: {
+            type: Date,
+            required: true,
+          },
+        },
+      ],
     },
     profName: {
       type: String,
@@ -36,23 +32,29 @@ const courseSchema = new mongoose.Schema(
     profEmail: {
       type: String,
     },
-    lectureTime: {
-      type: String,
-    },
-    lectureLocation: {
-      type: String,
-    },
-    tutorialTime: {
-      type: String,
-    },
-    tutorialLocation: {
-      type: String,
-    },
-    officeHours: {
-      type: String,
-    },
-    officeLocation: {
-      type: String,
+    commitments: {
+      type: [
+        {
+          commitmentType: {
+            type: String,
+            enum: ["LECTURE", "OFFICE HOURS", "TUTORIAL", "LABS"],
+            required: true,
+          },
+          dayOfWeek: {
+            // 1-Monday, 7-Sunday
+            type: Number,
+            min: 1,
+            max: 7,
+            required: true,
+            validate: {
+              validator: Number.isInteger,
+              message: "{VALUE} is not an integer value",
+            },
+          },
+          time: { type: Number, required: true }, // Minutes from start of 00:00
+          duration: { type: Number, required: true }, // Duration in minutes
+        },
+      ],
     },
   },
   { timestamps: true }

@@ -27,11 +27,23 @@ const getCourse = async (req, res) => {
 
 // create a new course
 const createCourse = async (req, res) => {
-  const { title, load, reps } = req.body;
+  const {
+    name,
+    profName,
+    profEmail,
+    evaluations: { evaluationName, weight, grade, dueDate },
+    commitments: { commitmentType, dayOfWeek, time, duraction },
+  } = req.body;
 
   // add to the database
   try {
-    const course = await Course.create({ title, load, reps });
+    const course = await Course.create({
+      name,
+      profName,
+      profEmail,
+      evaluations: { evaluationName, weight, grade, dueDate },
+      commitments: { commitmentType, dayOfWeek, time, duraction },
+    });
     res.status(200).json(course);
   } catch (error) {
     res.status(400).json({ error: error.message });
