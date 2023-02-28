@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 app.use("/api/courses", courseRoutes);
 
 // connect to db
+mongoose.set("strictQuery", true); //Ensures queries follow schema
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

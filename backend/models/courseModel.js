@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const evaluationsSchema = new Schema({
+const evaluationsSchema = new mongoose.Schema({
   // course_ID: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: "Course",
@@ -21,7 +21,7 @@ const evaluationsSchema = new Schema({
   },
 });
 
-const courseSchema = new Schema(
+const courseSchema = new mongoose.Schema(
   {
     name: {
       type: String,
