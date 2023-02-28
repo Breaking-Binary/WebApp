@@ -31,8 +31,8 @@ const createCourse = async (req, res) => {
     name,
     profName,
     profEmail,
-    evaluations: { evaluationName, weight, grade, dueDate },
-    commitments: { commitmentType, dayOfWeek, time, duraction },
+    evaluations: [{ evaluationName, weight, grade, dueDate }],
+    commitments: [{ commitmentType, dayOfWeek, time, duraction }],
   } = req.body;
 
   // add to the database
@@ -41,8 +41,8 @@ const createCourse = async (req, res) => {
       name,
       profName,
       profEmail,
-      evaluations: { evaluationName, weight, grade, dueDate },
-      commitments: { commitmentType, dayOfWeek, time, duraction },
+      evaluations: [{ evaluationName, weight, grade, dueDate }],
+      commitments: [{ commitmentType, dayOfWeek, time, duraction }],
     });
     res.status(200).json(course);
   } catch (error) {
