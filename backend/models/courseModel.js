@@ -1,20 +1,58 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+const evaluationsSchema = new Schema({
+  // course_ID: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Course",
+  //   required: true,
+  // },
+  name: {
+    type: String,
+    required: true,
+  },
+  weight: {
+    type: Number,
+    required: true,
+  },
+  grade: Number,
+  dueDate: {
+    type: Date,
+    required: true,
+  },
+});
 
 const courseSchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
-    reps: {
-      type: Number,
-      required: true,
+    evaluations: {
+      type: [evaluationsSchema],
     },
-    load: {
-      type: Number,
-      required: true,
+    profName: {
+      type: String,
+    },
+    profEmail: {
+      type: String,
+    },
+    lectureTime: {
+      type: String,
+    },
+    lectureLocation: {
+      type: String,
+    },
+    tutorialTime: {
+      type: String,
+    },
+    tutorialLocation: {
+      type: String,
+    },
+    officeHours: {
+      type: String,
+    },
+    officeLocation: {
+      type: String,
     },
   },
   { timestamps: true }
