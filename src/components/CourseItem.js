@@ -3,8 +3,7 @@ import "../styles/Courses.css";
 function CourseItem({ name, image, profname, id }) {
 	return (
 		<div className="courseItem">
-			{name} - course image:
-			{image} {profname}
+			<h1 className="text">{name} </h1>
 		</div>
 	);
 }
