@@ -105,7 +105,7 @@ function SyllabusForm({ onSubmit }) {
           <div>
             <h3>Course Information</h3>
             <div>
-              <label htmlFor="courseName">Course Name:</label>
+              <label htmlFor="courseName">Course Name</label>
               <input
                 id="courseName"
                 type="text"
@@ -114,7 +114,7 @@ function SyllabusForm({ onSubmit }) {
               />
             </div>
             <div>
-              <label htmlFor="courseCode">Course Code:</label>
+              <label htmlFor="courseCode">Course Code</label>
               <input
                 id="courseCode"
                 type="text"
@@ -123,7 +123,7 @@ function SyllabusForm({ onSubmit }) {
               />
             </div>
             <div>
-              <label htmlFor="schoolTerm">School Term:</label>
+              <label htmlFor="schoolTerm">School Term</label>
               <input
                 id="schoolTerm"
                 type="text"
@@ -132,7 +132,7 @@ function SyllabusForm({ onSubmit }) {
               />
             </div>
             <div>
-              <label htmlFor="professorName">Professor Name:</label>
+              <label htmlFor="professorName">Professor Name</label>
               <input
                 id="professorName"
                 type="text"
@@ -141,7 +141,7 @@ function SyllabusForm({ onSubmit }) {
               />
             </div>
             <div>
-              <label htmlFor="professorEmail">Professor Email:</label>
+              <label htmlFor="professorEmail">Professor Email</label>
               <input
                 id="professorEmail"
                 type="text"
@@ -157,7 +157,7 @@ function SyllabusForm({ onSubmit }) {
               {lectureInfo.map((lecture, index) => (
                 <div key={index}>
                   <div>
-                    <label htmlFor={`lecture-date-${index}`}>Date:</label>
+                    <label htmlFor={`lecture-date-${index}`}>Date</label>
                     <input
                       id={`lecture-date-${index}`}
                       type="date"
@@ -168,7 +168,7 @@ function SyllabusForm({ onSubmit }) {
                     />
                   </div>
                   <div>
-                    <label htmlFor={`lecture-time-${index}`}>Time:</label>
+                    <label htmlFor={`lecture-time-${index}`}>Time</label>
                     <input
                       id={`lecture-time-${index}`}
                       type="time"
@@ -196,7 +196,7 @@ function SyllabusForm({ onSubmit }) {
                     />
                   </div>
                   <div>
-                    <label htmlFor={`lecture-type-${index}`}>Type:</label>
+                    <label htmlFor={`lecture-type-${index}`}>Type</label>
                     <input
                       id={`lecture-type-${index}`}
                       type="text"
@@ -217,13 +217,13 @@ function SyllabusForm({ onSubmit }) {
             </div>
             <div>
               <h3>Evaluation Information</h3>
-              <button type="button" onClick={handleAddEvaluation}>
+              <button type="eval-button" onClick={handleAddEvaluation}>
                 Add Evaluation
               </button>
               {evaluationInfo.map((evaluation, index) => (
                 <div key={index}>
                   <div>
-                    <label htmlFor={`evaluation-type-${index}`}>Type:</label>
+                    <label htmlFor={`evaluation-type-${index}`}>Type</label>
                     <input
                       id={`evaluation-type-${index}`}
                       type="text"
@@ -239,7 +239,7 @@ function SyllabusForm({ onSubmit }) {
                   </div>
                   <div>
                     <label htmlFor={`evaluation-weightage-${index}`}>
-                      Weightage:
+                      Weightage
                     </label>
                     <input
                       id={`evaluation-weightage-${index}`}
@@ -256,7 +256,7 @@ function SyllabusForm({ onSubmit }) {
                   </div>
                   <div>
                     <label htmlFor={`evaluation-dueDate-${index}`}>
-                      Due Date:
+                      Due Date
                     </label>
                     <input
                       id={`evaluation-dueDate-${index}`}
