@@ -179,32 +179,37 @@ function SyllabusForm({ onSubmit }) {
                     />
                   </div>
                   <div>
-                    <label htmlFor={`lecture-duration-${index}`}>
-                      Duration (minutes):
-                    </label>
-                    <input
+                    <label htmlFor={`lecture-duration-${index}`}>Duration (hours)</label>
+                    <select
                       id={`lecture-duration-${index}`}
-                      type="number"
                       value={lecture.duration}
                       onChange={(e) =>
-                        handleLectureInfoChange(
-                          index,
-                          "duration",
-                          parseInt(e.target.value)
-                        )
+                        handleLectureInfoChange(index, "duration", e.target.value)
                       }
-                    />
+                    >
+                      <option value="">Select a duration</option>
+                      <option value="0.5">0.5 hour</option>
+                      <option value="1">1 hours</option>
+                      <option value="1.5">1.5 hours</option>
+                      <option value="2">2 hours</option>
+                      <option value="2.5">2.5 hours</option>
+                      <option value="3">3 hours</option>
+                    </select>
                   </div>
                   <div>
                     <label htmlFor={`lecture-type-${index}`}>Type</label>
-                    <input
+                    <select
                       id={`lecture-type-${index}`}
-                      type="text"
                       value={lecture.type}
                       onChange={(e) =>
                         handleLectureInfoChange(index, "type", e.target.value)
                       }
-                    />
+                    >
+                      <option value="">Select type</option>
+                      <option value="Lecture">Lecture</option>
+                      <option value="Tutorial">Tutorial</option>
+                      <option value="Lab">Lab</option>
+                    </select>
                   </div>
                   <button
                     type="remove-button"
@@ -223,7 +228,7 @@ function SyllabusForm({ onSubmit }) {
               {evaluationInfo.map((evaluation, index) => (
                 <div key={index}>
                   <div>
-                    <label htmlFor={`evaluation-type-${index}`}>Type</label>
+                    <label htmlFor={`evaluation-type-${index}`}>Evaluation Name</label>
                     <input
                       id={`evaluation-type-${index}`}
                       type="text"
