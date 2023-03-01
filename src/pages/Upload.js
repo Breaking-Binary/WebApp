@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import "./App.css";
+import "../styles/UploadFile.css";
 
 
 function SyllabusForm({ onSubmit }) {
