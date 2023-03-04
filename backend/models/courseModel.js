@@ -7,6 +7,13 @@ const courseSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    profName: {
+      type: String,
+    },
+    profEmail: {
+      type: String,
+      required: false,
+    },
     evaluations: {
       type: [
         {
@@ -25,12 +32,7 @@ const courseSchema = new mongoose.Schema(
           },
         },
       ],
-    },
-    profName: {
-      type: String,
-    },
-    profEmail: {
-      type: String,
+      required: false,
     },
     commitments: {
       type: [
@@ -55,6 +57,7 @@ const courseSchema = new mongoose.Schema(
           duration: { type: Number, required: true }, // Duration in minutes
         },
       ],
+      required: false,
     },
   },
   { timestamps: true }
