@@ -64,24 +64,24 @@ const courseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  school: {
-    type: String,
-    required: false,
-  },
-  courses: {
-    type: Controller.getCourses,
-    required: false,
-  },
-});
+// const userSchema = new mongoose.Schema({
+//   username: {
+//     type: String,
+//     required: true,
+//   },
+//   password: {
+//     type: String,
+//     required: true,
+//   },
+//   school: {
+//     type: String,
+//     required: false,
+//   },
+//   courses: {
+//     type: Controller.getCourses,
+//     required: false,
+//   },
+// });
 
 module.exports = mongoose.model("Course", courseSchema);
-module.exports = mongoose.model("User", userSchema);
+// module.exports = mongoose.model("User", userSchema);

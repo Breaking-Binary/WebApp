@@ -7,21 +7,21 @@ const {
   updateCourse,
 } = require("../controllers/courseController");
 
-const router = express.Router();
+const courseRouter = express.Router();
 
 // GET all courses
-router.get("/", getCourses);
+courseRouter.get("/", getCourses);
 
 // GET a single course
-router.get("/:id", getCourse);
+courseRouter.get("/:id", getCourse);
 
 // POST a new course
-router.post("/", createCourse);
+courseRouter.post("/", createCourse);
 
 // DELETE a course
-router.delete("/:id", deleteCourse);
+courseRouter.delete("/:id", deleteCourse);
 
 // UPDATE a course
-router.patch("/:id", updateCourse);
+courseRouter.patch("/:id", updateCourse);
 
-module.exports = router;
+module.exports = courseRouter;

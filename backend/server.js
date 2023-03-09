@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const courseRoutes = require("./routes/courses");
+const userRoutes = require("./routes/users");
 
 // express app
 const app = express();
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/api/courses", courseRoutes);
+app.use("/api/users", userRoutes);
 
 // connect to db
 mongoose.set("strictQuery", true); //Ensures queries follow schema
