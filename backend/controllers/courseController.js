@@ -75,29 +75,10 @@ const updateCourse = async (req, res) => {
   res.status(200).json(course);
 };
 
-const createUser = async (req, res) => {
-  const { username, password } = req.body;
-
-  try {
-    const course = await Course.create({
-      username,
-      password,
-    });
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-const resetPassword = async (req, res) => {
-  const { password } = req.body;
-};
-
 module.exports = {
   getCourses,
   getCourse,
   createCourse,
   deleteCourse,
   updateCourse,
-  createUser,
 };
