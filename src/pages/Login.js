@@ -4,6 +4,7 @@ import "../styles/Login.css";
 const LoginForm = () => {
 	const [currentUserName, setCurrentUserName] = useState("");
 	const [currentPassword, setCurrentPassword] = useState("");
+
 	return (
 		<div className="page">
 			<div className="cover">
