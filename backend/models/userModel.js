@@ -3,6 +3,7 @@ const Controller = require("../controllers/userController");
 const courseModel = require("../models/courseModel");
 
 const userSchema = new mongoose.Schema({
+  // This should be email
   username: {
     type: String,
     required: true,
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  // courses array holds ids of course objects
   courses: {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
     required: false,
