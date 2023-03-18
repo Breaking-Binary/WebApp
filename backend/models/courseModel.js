@@ -1,20 +1,25 @@
 const mongoose = require("mongoose");
 const Controller = require("../controllers/courseController");
 
+// Schema for course object
 const courseSchema = new mongoose.Schema(
   {
+    // Name of course
     name: {
       type: String,
       required: true,
       unique: true,
     },
+    // Professor Name
     profName: {
       type: String,
     },
+    // Professor email
     profEmail: {
       type: String,
       required: false,
     },
+    // evaluations array holding evaluation object
     evaluations: {
       type: [
         {
@@ -35,16 +40,18 @@ const courseSchema = new mongoose.Schema(
       ],
       required: false,
     },
+    // commitments array holds either Lecture, Office hours, Tutorial, or Labs
     commitments: {
       type: [
         {
+          // Must be one of: "LECTURE", "OFFICE HOURS", "TUTORIAL", "LABS"
           commitmentType: {
             type: String,
             enum: ["LECTURE", "OFFICE HOURS", "TUTORIAL", "LABS"],
             required: true,
           },
           dayOfWeek: {
-            // 1-Monday, 7-Sunday
+            // 1-Monday, 7-Sunday (must be an integer)
             type: Number,
             min: 1,
             max: 7,
@@ -64,24 +71,4 @@ const courseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  school: {
-    type: String,
-    required: false,
-  },
-  courses: {
-    type: Controller.getCourses,
-    required: false,
-  },
-});
-
 module.exports = mongoose.model("Course", courseSchema);
-module.exports = mongoose.model("User", userSchema);

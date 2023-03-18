@@ -12,10 +12,12 @@ const getCourses = async (req, res) => {
 const getCourse = async (req, res) => {
   const { id } = req.params;
 
+  // checks valid course
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such course" });
   }
 
+  // finds course
   const course = await Course.findById(id);
 
   if (!course) {
@@ -40,10 +42,12 @@ const createCourse = async (req, res) => {
 const deleteCourse = async (req, res) => {
   const { id } = req.params;
 
+  // check valid id
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ error: "No such course" });
   }
 
+  // find by id and delete or return error
   const course = await Course.findOneAndDelete({ _id: id });
 
   if (!course) {
@@ -61,6 +65,7 @@ const updateCourse = async (req, res) => {
     return res.status(400).json({ error: "No such course" });
   }
 
+  // updates the object found by id
   const course = await Course.findOneAndUpdate(
     { _id: id },
     {
@@ -75,29 +80,10 @@ const updateCourse = async (req, res) => {
   res.status(200).json(course);
 };
 
-const createUser = async (req, res) => {
-  const { username, password } = req.body;
-
-  try {
-    const course = await Course.create({
-      username,
-      password,
-    });
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-const resetPassword = async (req, res) => {
-  const { password } = req.body;
-};
-
 module.exports = {
   getCourses,
   getCourse,
   createCourse,
   deleteCourse,
   updateCourse,
-  createUser,
 };
