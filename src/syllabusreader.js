@@ -1,4 +1,3 @@
-
 const pdfjsLib = require('pdfjs-dist');
 const txtgen = require('txtgen');
 
@@ -116,8 +115,6 @@ function processTextFile(data) {
     }
 
 
-
-
     let patternLoc = /at\s+([A-Z][a-z]*)(\s[A-Z][a-z]*)?\b/g;
 
 
@@ -135,8 +132,6 @@ function processTextFile(data) {
     if (lineWithEdition) {
         console.log("Textbook:", lineWithEdition);
     }
-
-
 
 
 }
