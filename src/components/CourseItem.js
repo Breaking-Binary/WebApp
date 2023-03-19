@@ -1,10 +1,11 @@
 import React from "react";
 import "../styles/Courses.css";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function CourseItem({name, image, profname, id}) {
+function CourseItem({ name, image, profname, id }) {
     const navigate = useNavigate();
 
+    console.log("This is a test")
     return (
         <div
             className="courseItem"
