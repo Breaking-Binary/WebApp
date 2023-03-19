@@ -1,6 +1,26 @@
-const fs = require('fs');
 
-const filePath = 'outline2210.txt';
+const pdfjsLib = require('pdfjs-dist');
+const txtgen = require('txtgen');
+
+// Load the PDF file using pdfjs-dist
+const pdfUrl = 'outline2210.pdf';
+const pdf = pdfjsLib.getDocument(pdfUrl).promise;
+
+// Loop through each page and extract the text
+let text = '';
+for (let i = 1; i <= pdf.numPages; i++) {
+    const page = pdf.getPage(i);
+    const content = page.getTextContent();
+    text += content.items.map(item => item.str).join(' ');
+}
+
+// Convert the text to a readable format using txtgen
+const readableText = txtgen.parse(text);
+
+// Save the readable text to a file
+const fs = require('fs');
+fs.writeFileSync('output.txt', readableText);
+
 
 // Read the file contents as a string
 const data = fs.readFileSync(filePath, 'utf-8');
@@ -68,5 +88,55 @@ function processTextFile(data) {
     }
 
     console.log('Dates and keywords found:', output);
+
+    let patternName = /(Professor|Dr\.|Lecturer|Instructor|TA|Teaching Assistant|Dr|Prof\.?)\s+([A-Z][a-z]+ \b[A-Z][a-z]+)/g;
+
+    let matchName = data.matchAll(patternName);
+
+    for (const match of matchName) {
+        console.log(match[1] + ": " + match[2]);
+    }
+
+    let patternEmail = /\b\w+@\w+\.uwo\.ca\b/;
+
+    let matchEmail = data.match(patternEmail);
+
+    if (matchEmail) {
+        let email = matchEmail[0];
+        console.log("Email: " + email);
+    }
+
+    let patternTime = /(\d{1,2}:\d{2})(am|pm)?/g;
+
+    let matchTime = data.matchAll(patternTime);
+
+    for (const match of matchTime) {
+        let time = match[1] + (match[2] ? match[2] : "");
+        console.log("Lecture Time: " + time);
+    }
+
+
+
+
+    let patternLoc = /at\s+([A-Z][a-z]*)(\s[A-Z][a-z]*)?\b/g;
+
+
+    let matchLoc = data.matchAll(patternLoc);
+
+    for (const match of matchLoc) {
+        let location = match[1];
+        console.log("Location: " + location);
+    }
+
+
+    const lines = data.split("\n");
+    const lineWithEdition = lines.find(line => line.includes("edition"));
+
+    if (lineWithEdition) {
+        console.log("Textbook:", lineWithEdition);
+    }
+
+
+
 
 }
