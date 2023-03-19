@@ -15,7 +15,7 @@ function Navbar() {
         <div className="navbar" id={expandNavbar ? "open" : "close"}>
             <div className="links">
                 <Link to="/courses"> Courses </Link>
-                <Link to="/syllabus"> Syllabus Upload </Link>
+                <Link to="/upload"> Syllabus Upload </Link>
             </div>
         </div>
     );
