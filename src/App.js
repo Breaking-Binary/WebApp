@@ -31,6 +31,7 @@ import SignUp from './components/SignUp'
 import ForgotPassword from './components/ForgotPassword'
 import Courses from "./pages/Courses";
 import CourseDisplay from "./pages/CourseDisplay";
+import Upload from "./pages/Upload";
 
 function App() {
     return (
@@ -42,6 +43,7 @@ function App() {
                     <Route path="/forgot-password" element={<ForgotPassword/>}/>
                     <Route path="/courses" element={<Courses/>}/>
                     <Route path="/courses/:id" element={<CourseDisplay/>}/>
+                    <Route path="/upload" element={<Upload/>}/>
                 </Routes>
         </Router>
     )

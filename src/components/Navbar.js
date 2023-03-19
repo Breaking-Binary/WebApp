@@ -13,8 +13,7 @@ function Navbar() {
 
     return (
         <div className="navbar" id={expandNavbar ? "open" : "close"}>
-            <div classNames="links">
-                <Link to="/"> Home </Link>
+            <div className="links">
                 <Link to="/courses"> Courses </Link>
                 <Link to="/syllabus"> Syllabus Upload </Link>
             </div>
