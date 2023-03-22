@@ -37,7 +37,7 @@ export default class SignUp extends Component {
             <div className="App">
                 <LoginNavBar/>
                 <div className="auth-wrapper">
-                    <div className="form-signin needs-validation auth-inner">
+                    <div className="auth-inner">
                         <form onSubmit={this.handleSubmit}>
                             <h3>Sign Up</h3>
                             <div className="mb-3">
@@ -49,7 +49,6 @@ export default class SignUp extends Component {
                                     placeholder="First name"
                                     value={this.state.firstName}
                                     onChange={this.handleInputChange}
-                                    required
                                 />
                             </div>
                             <div className="mb-3">
@@ -61,7 +60,6 @@ export default class SignUp extends Component {
                                     placeholder="Last name"
                                     value={this.state.lastName}
                                     onChange={this.handleInputChange}
-                                    required
                                 />
                             </div>
                             <div className="mb-3">
@@ -73,7 +71,6 @@ export default class SignUp extends Component {
                                     placeholder="Enter email"
                                     value={this.state.email}
                                     onChange={this.handleInputChange}
-                                    required
                                 />
                             </div>
                             <div className="mb-3">
@@ -85,7 +82,6 @@ export default class SignUp extends Component {
                                     placeholder="Enter password"
                                     value={this.state.password}
                                     onChange={this.handleInputChange}
-                                    required
                                 />
                             </div>
                             <div className="mb-3">
@@ -97,7 +93,6 @@ export default class SignUp extends Component {
                                     placeholder="Confirm password"
                                     value={this.state.confirmPassword}
                                     onChange={this.handleInputChange}
-                                    required
                                 />
                             </div>
                             <div className="d-grid">
