@@ -6,14 +6,13 @@ import Navbar from "../components/Navbar";
 import "../styles/Home.css";
 
 function Home() {
-    const [listOfCourses, setListOfCourses] = useState([]);
+    const [course_list, set_course_list] = useState([]);
 
-    useEffect(() => {
-        Axios.get("http://localhost:4000/getUsers").then((res) => {
-            setListOfCourses(res.data);
-            console.log(res.data);
-        });
-    }, []);
+    Axios.get('http://localhost:4000/api/courses', {})
+        .then(function (response) {
+            console.log(response.data);
+        })
+
     return (
         <div>
             <Navbar/>
