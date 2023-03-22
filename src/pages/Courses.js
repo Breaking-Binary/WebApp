@@ -22,8 +22,9 @@ function Home() {
 						<CourseItem
 							className="courseList"
 							name={course.name}
-							profname={course.profName}
-							key={index}
+							profName={course.profName}
+							key={course._id}
+							id={index}
 						/>
 					);
 				})}

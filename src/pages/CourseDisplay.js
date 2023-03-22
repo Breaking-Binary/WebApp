@@ -1,19 +1,29 @@
 import React from "react";
-import {useParams} from "react-router-dom";
-import {courseList} from "../courseList";
+import Axios from "axios";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import "../styles/Home.css";
 import Navbar from "../components/Navbar";
 
 function CourseDisplay() {
-    const {id} = useParams();
-    const course = courseList[id];
-    return (
-        <div>
-            <Navbar/>
-            <div> Course Name: {course.name} </div>
-            <div> Professor: {course.profname}</div>
-        </div>
-    );
+	const [course_list, setCourseList] = useState([]);
+
+	useEffect(() => {
+		Axios.get("http://localhost:4000/api/courses").then((res) => {
+			setCourseList(res.data);
+		});
+	}, []);
+
+	const { id } = useParams();
+	const course = course_list[id];
+	return (
+		<div>
+			<Navbar />
+			<div> Course Name: {course.name} </div>
+			<div> Professor: {course.profname}</div>
+		</div>
+	);
 }
 
 export default CourseDisplay;

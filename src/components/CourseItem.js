@@ -1,8 +1,8 @@
 import React from "react";
 import "../styles/Courses.css";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function CourseItem({name, image, profname, id}) {
+function CourseItem({ name, profName, id }) {
 	const navigate = useNavigate();
 
 	return (
@@ -13,6 +13,7 @@ function CourseItem({name, image, profname, id}) {
 			}}
 		>
 			<h1 className="text">{name} </h1>
+			<h1> {profName}</h1>
 		</div>
 	);
 }
