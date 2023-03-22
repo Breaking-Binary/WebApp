@@ -2,7 +2,6 @@ import React from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import "../styles/Home.css";
 import Navbar from "../components/Navbar";
 
@@ -17,11 +16,11 @@ function CourseDisplay() {
 
 	const { id } = useParams();
 	const course = course_list[id];
+
 	return (
 		<div>
 			<Navbar />
-			<div> Course Name: {course.name} </div>
-			<div> Professor: {course.profname}</div>
+			{/* <div> {course_list[id].name}</div> */}
 		</div>
 	);
 }

@@ -11,7 +11,7 @@ function Home() {
 		Axios.get("http://localhost:4000/api/courses").then((res) => {
 			setCourseList(res.data);
 		});
-	}, [course_list]);
+	}, []);
 
 	return (
 		<div>
