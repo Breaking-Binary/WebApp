@@ -27,6 +27,17 @@ function CourseDisplay() {
 						<div>
 							<div> Professor's Name: {currentCourse.profName}</div>
 							<div> Professor's Email: {currentCourse.profEmail}</div>
+
+							{currentCourse.commitments.map((commitment) => {
+								return (
+									<div>
+										<div> Type of Class: {commitment.commitmentType} </div>
+										<div> Recurring Times: {commitment.dayOfWeek} </div>
+										<div> Duration: {commitment.duration} </div>
+										<div> Time: {commitment.time} </div>
+									</div>
+								);
+							})}
 							{currentCourse.evaluations.map((evaluation, index) => {
 								return (
 									<div>
