@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/UploadFile.css";
-import {getDocument} from "pdfjs-dist";
+import { getDocument } from "pdfjs-dist";
+import { Document, Page } from 'react-pdf';
 
 
-function SyllabusForm({onSubmit}) {
+function SyllabusForm({ onSubmit }) {
     const [lectureInfo, setLectureInfo] = useState([]);
     const [evaluationInfo, setEvaluationInfo] = useState([]);
     const [courseName, setCourseName] = useState("");
@@ -20,7 +21,8 @@ function SyllabusForm({onSubmit}) {
         const fileReader = new FileReader();
         fileReader.onload = async (event) => {
             const content = event.target.file;
-            const pdf = await getDocument({data: new Uint8Array(content)}).promise;
+            // <Document file={fileContent} options={{ workerSrc: pdfWorker }} />
+            const pdf = await getDocument({ data: new Uint8Array(content) }).promise;
             const txt = [];
             for (let i = 1; i <= pdf.numPages; i++) {
                 const page = await pdf.getPage(i);
@@ -57,7 +59,7 @@ function SyllabusForm({onSubmit}) {
 
             // Find all the dates and keywords
             for (const pattern of [...datePatterns, ...keywordPatterns]) {
-                const matches = file.matchAll(pattern);
+                const matches = String(file).matchAll(pattern);
                 if (matches) {
                     for (const match of matches) {
                         if (datePatterns.includes(pattern)) {
@@ -83,7 +85,7 @@ function SyllabusForm({onSubmit}) {
                 const lineStart = file.lastIndexOf("\n", date.index) + 1;
                 const lineEnd = file.indexOf("\n", date.index);
                 const line = file.slice(lineStart, lineEnd > -1 ? lineEnd : undefined);
-                const keywordMatch = line.match(keywordPatterns[0]);
+                const keywordMatch = String(line).match(keywordPatterns[0]);
                 if (keywordMatch) {
                     keyword = keywordMatch[0];
                 } else {
@@ -102,27 +104,63 @@ function SyllabusForm({onSubmit}) {
             }
 
             console.log("Dates and keywords found:", output);
+
+            let patternName = /(Professor|Dr\.|Lecturer|Instructor|TA|Teaching Assistant|Dr|Prof\.?)\s+([A-Z][a-z]+ \b[A-Z][a-z]+)/g;
+            let matchName = String(file).matchAll(patternName);
+
+            for (const match of matchName) {
+                console.log(match[1] + ": " + match[2]);
+            }
+
+            let patternEmail = /\b\w+@\w+\.uwo\.ca\b/gi;
+
+            let matchEmail = String(file).matchAll(patternEmail);
+
+            if (matchEmail) {
+                let email = matchEmail[0];
+                console.log("Email: " + email);
+            }
+
+            let patternTime = /(\d{1,2}:\d{2})(am|pm)?/g;
+
+            let matchTime = String(file).matchAll(patternTime);
+
+            for (const match of matchTime) {
+                let time = match[1] + (match[2] ? match[2] : "");
+                console.log("Lecture Time: " + time);
+            }
+
+
+            let patternLoc = /at\s+([A-Z][a-z]*)(\s[A-Z][a-z]*)?\b/g;
+
+
+            let matchLoc = String(file).matchAll(patternLoc);
+
+            for (const match of matchLoc) {
+                let location = match[1];
+                console.log("Location: " + location);
+            }
         }
     };
 
     const handleAddLecture = () => {
         setLectureInfo((prev) => [
             ...prev,
-            {date: "", time: "", duration: "", type: ""},
+            { date: "", time: "", duration: "", type: "" },
         ]);
     };
 
     const handleAddEvaluation = () => {
         setEvaluationInfo((prev) => [
             ...prev,
-            {type: "", weightage: "", dueDate: ""},
+            { type: "", weightage: "", dueDate: "" },
         ]);
     };
 
     const handleLectureInfoChange = (index, field, value) => {
         setLectureInfo((prev) =>
             prev.map((lecture, i) =>
-                i === index ? {...lecture, [field]: value} : lecture
+                i === index ? { ...lecture, [field]: value } : lecture
             )
         );
     };
@@ -130,7 +168,7 @@ function SyllabusForm({onSubmit}) {
     const handleEvaluationInfoChange = (index, field, value) => {
         setEvaluationInfo((prev) =>
             prev.map((evaluation, i) =>
-                i === index ? {...evaluation, [field]: value} : evaluation
+                i === index ? { ...evaluation, [field]: value } : evaluation
             )
         );
     };
@@ -156,7 +194,7 @@ function SyllabusForm({onSubmit}) {
 
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="container">
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -387,8 +425,8 @@ function SyllabusForm({onSubmit}) {
                                 <button type="submit">Submit</button>
                             </div>
                         ) : (
-                            <div></div>
-                        )}
+                                <div></div>
+                            )}
                     </div>
                 </form>
             </div>
