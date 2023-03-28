@@ -10,6 +10,7 @@ function Home() {
 	useEffect(() => {
 		Axios.get("http://localhost:4000/api/courses").then((res) => {
 			setCourseList(res.data);
+			console.log(res.data);
 		});
 	}, []);
 
