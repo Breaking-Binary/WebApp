@@ -20,7 +20,29 @@ function CourseDisplay() {
 	return (
 		<div>
 			<Navbar />
-			{/* <div> {course_list[id].name}</div> */}
+			{course_list
+				.filter((courseElement, index) => index == id)
+				.map((currentCourse) => {
+					return (
+						<div>
+							<div> Professor's Name: {currentCourse.profName}</div>
+							<div> Professor's Email: {currentCourse.profEmail}</div>
+							{currentCourse.evaluations.map((evaluation, index) => {
+								return (
+									<div>
+										<span> Evaluation {index + 1}: </span>
+										<div> Name: {evaluation.evaluationName} </div>
+										<div> Weight: {evaluation.weight} </div>
+										<div> Grade: {evaluation.grade} </div>
+										<div> Due Date: {evaluation.dueDate} </div>
+									</div>
+								);
+							})}
+							{/* <div> Assignments: {currentCourse.evaluations[0].grade} </div> */}
+							<div> Course Identifier: {currentCourse._id}</div>
+						</div>
+					);
+				})}
 		</div>
 	);
 }
