@@ -141,31 +141,35 @@ function SyllabusForm({ onSubmit }) {
     setLectureInfo((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
+    // e.preventDefault();
+    const name = "Random Idiots";
     if (!fileContent) {
-      alert("Please upload a PDF file.");
-      return;
+      //   alert("Please upload a PDF file.");
+      //   return;
     }
 
     const data = {
-      courseName,
-      courseCode,
-      schoolTerm,
-      professorName,
-      professorEmail,
+      name: name,
+      courseName: courseName,
+      courseCode: courseCode,
+      schoolTerm: schoolTerm,
+      profName: professorName,
+      profEmail: professorEmail,
       lectureInfo,
-      evaluationInfo,
+      evaluations: evaluationInfo,
       content: fileContent,
     };
 
     try {
-      const response = await axios.post("/api/syllabus/upload-txt", data);
+      const response = await axios.post(
+        "http://localhost:4000/api/courses",
+        data
+      );
       console.log(response.data);
       alert("Syllabus information successfully uploaded.");
     } catch (error) {
-      console.error(error);
+      //console.error(error);
       alert("An error occurred while processing the syllabus information.");
     }
   };
