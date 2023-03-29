@@ -3,6 +3,14 @@ const Controller = require("../controllers/userController");
 const courseModel = require("../models/courseModel");
 
 const userSchema = new mongoose.Schema({
+    firstname: {
+        type: String,
+        required: true,
+    },
+    lastname: {
+        type: String,
+        required: true,
+    },
     // This should be email
     username: {
         type: String,
