@@ -5,33 +5,33 @@ import Navbar from "../components/Navbar";
 import "../styles/Home.css";
 
 function Home() {
-	const [course_list, setCourseList] = useState([]);
+  const [course_list, setCourseList] = useState([]);
 
-	useEffect(() => {
-		Axios.get("http://localhost:4000/api/courses").then((res) => {
-			setCourseList(res.data);
-			console.log(res.data);
-		});
-	}, []);
+  useEffect(() => {
+    Axios.get("http://localhost:4000/api/courses").then((res) => {
+      setCourseList(res.data);
+      console.log(res.data);
+    });
+  }, []);
 
-	return (
-		<div>
-			<Navbar />
-			<div className="courseList">
-				{course_list.map((course, index) => {
-					return (
-						<CourseItem
-							className="courseList"
-							name={course.name}
-							profName={course.profName}
-							key={course._id}
-							id={index}
-						/>
-					);
-				})}
-			</div>
-		</div>
-	);
+  return (
+    <div>
+      <Navbar />
+      <div className="courseList">
+        {course_list.map((course, index) => {
+          return (
+            <CourseItem
+              className="courseList"
+              name={course.name}
+              profName={course.profName}
+              key={course._id}
+              id={index}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default Home;
