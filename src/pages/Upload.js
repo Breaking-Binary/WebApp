@@ -143,7 +143,7 @@ function SyllabusForm({ onSubmit }) {
 
   const handleSubmit = async () => {
     // e.preventDefault();
-    const name = "Random Idiots";
+    const name = "Bob is cools";
     if (!fileContent) {
       //   alert("Please upload a PDF file.");
       //   return;
