@@ -4,13 +4,13 @@ import LoginNavBar from "./LoginNavBar";
 
 export const SignUp = () => {
     const [inputs, setInputs] = useState({
-        firstName: "",
-        lastName: "",
+        firstname: "",
+        lastname: "",
         email: "",
         password: "",
         confirmPassword: "",
         school: "",
-        courses: ""
+        courses: []
     });
 
     const handleChange = (event) => {
@@ -24,10 +24,12 @@ export const SignUp = () => {
         alert(inputs);
         axios.post(`${process.env.BACKEND_SERVER_URL}/api/users/`, {
             params: {
-                firstName: inputs.firstName,
-                lastName: inputs.lastName,
-                email: inputs.email,
-                password: inputs.password
+                firstname: inputs.firstname,
+                lastname: inputs.lastname,
+                username: inputs.email,
+                password: inputs.password,
+                school: inputs.school,
+                courses: inputs.courses
             }
         }).then(r => {
         })
@@ -47,7 +49,7 @@ export const SignUp = () => {
                                     <input
                                         type="text"
                                         name="firstName"
-                                        value={inputs.firstName || ""}
+                                        value={inputs.firstname || ""}
                                         onChange={handleChange}
                                     />
                                 </label>
@@ -60,7 +62,7 @@ export const SignUp = () => {
                                     <input
                                         type="text"
                                         name="lastName"
-                                        value={inputs.lastName || ""}
+                                        value={inputs.lastname || ""}
                                         onChange={handleChange}
                                     />
                                 </label>

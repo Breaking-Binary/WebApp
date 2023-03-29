@@ -12,18 +12,18 @@ const app = express();
 
 var cors = require('cors');
 app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
+    cors({
+        origin: true,
+        credentials: true,
+    })
 );
 
 // middleware
 app.use(express.json());
 
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next();
+    console.log(req.path, req.method);
+    next();
 });
 
 // routes
@@ -33,14 +33,14 @@ app.use("/api/users", userRoutes);
 // connect to db
 mongoose.set("strictQuery", true); //Ensures queries follow schema
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("connected to database");
-    // listen to port
-    app.listen(process.env.PORT, () => {
-      console.log("listening for requests on port", process.env.PORT);
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("connected to database");
+        // listen to port
+        app.listen(process.env.PORT, () => {
+            console.log("listening for requests on port", process.env.PORT);
+        });
+    })
+    .catch((err) => {
+        console.log(err);
     });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
