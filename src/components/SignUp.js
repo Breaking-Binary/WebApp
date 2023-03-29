@@ -3,7 +3,15 @@ import axios from "axios";
 import LoginNavBar from "./LoginNavBar";
 
 export const SignUp = () => {
-    const [inputs, setInputs] = useState([]);
+    const [inputs, setInputs] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        school: "",
+        courses: ""
+    });
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -16,14 +24,12 @@ export const SignUp = () => {
         alert(inputs);
         axios.post(`${process.env.BACKEND_SERVER_URL}/api/users/`, {
             params: {
-                // firstName,
-                // lastName,
-                // email,
-                // password,
-                // confirmPassword,
-                // school,
-                // courses
+                firstName: inputs.firstName,
+                lastName: inputs.lastName,
+                email: inputs.email,
+                password: inputs.password
             }
+        }).then(r => {
         })
     };
 
@@ -32,7 +38,7 @@ export const SignUp = () => {
             <LoginNavBar/>
             <div className="auth-wrapper">
                 <div className="auth-inner">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <h3>Sign Up</h3>
                         <div className="mb-3">
                             <form>
