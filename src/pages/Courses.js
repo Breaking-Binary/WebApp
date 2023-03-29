@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import "../styles/Home.css";
 
 function Home() {
+
+  console.log("In the course home")
   const [course_list, setCourseList] = useState([]);
 
   useEffect(() => {
