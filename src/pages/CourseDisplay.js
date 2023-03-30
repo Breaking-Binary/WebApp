@@ -27,12 +27,21 @@ function CourseDisplay() {
 					.map((currentCourse) => {
 						return (
 							<div>
-								<div> Professor's Name: {currentCourse.profName}</div>
-								<div> Professor's Email: {currentCourse.profEmail}</div>
+								<div>
+									{" "}
+									<h1 className="text-center"> {currentCourse.name}</h1>{" "}
+								</div>
+								<div className="text-left">
+									<strong>Professor's Name: </strong> {currentCourse.profName}
+								</div>
+								<div>
+									{" "}
+									<strong> Professor's Email:</strong> {currentCourse.profEmail}
+								</div>
 
 								{currentCourse.commitments.map((commitment) => {
 									return (
-										<div>
+										<div className="">
 											<div> Type of Class: {commitment.commitmentType} </div>
 											<div> Recurring Times: {commitment.dayOfWeek} </div>
 											<div> Duration: {commitment.duration} </div>
@@ -40,10 +49,19 @@ function CourseDisplay() {
 										</div>
 									);
 								})}
+								<div className="text-center">
+									{" "}
+									<h3>ASSESSMENTS: </h3>{" "}
+								</div>
 								{currentCourse.evaluations.map((evaluation, index) => {
 									return (
-										<div>
-											<span> Evaluation {index + 1}: </span>
+										<div className="text-center">
+											<span>
+												<strong>
+													Evaluation
+													{index + 1}:
+												</strong>
+											</span>
 											<div> Name: {evaluation.evaluationName} </div>
 											<div> Weight: {evaluation.weight} </div>
 											<div> Grade: {evaluation.grade} </div>
