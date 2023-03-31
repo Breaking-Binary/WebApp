@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import 'bootstrap'
-import LoginNavBar from "./LoginNavBar";
+import LoginNavBar from "../components/LoginNavBar";
 
 export default class ForgotPassword extends Component {
     render() {
