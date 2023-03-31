@@ -3,7 +3,15 @@ import axios from "axios";
 import LoginNavBar from "./LoginNavBar";
 
 export const SignUp = () => {
-    const [inputs, setInputs] = useState([]);
+    const [inputs, setInputs] = useState({
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        school: "",
+        courses: []
+    });
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -16,14 +24,14 @@ export const SignUp = () => {
         alert(inputs);
         axios.post(`${process.env.BACKEND_SERVER_URL}/api/users/`, {
             params: {
-                // firstName,
-                // lastName,
-                // email,
-                // password,
-                // confirmPassword,
-                // school,
-                // courses
+                firstname: inputs.firstname,
+                lastname: inputs.lastname,
+                username: inputs.email,
+                password: inputs.password,
+                school: inputs.school,
+                courses: inputs.courses
             }
+        }).then(r => {
         })
     };
 
@@ -32,7 +40,7 @@ export const SignUp = () => {
             <LoginNavBar/>
             <div className="auth-wrapper">
                 <div className="auth-inner">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <h3>Sign Up</h3>
                         <div className="mb-3">
                             <form>
@@ -41,7 +49,7 @@ export const SignUp = () => {
                                     <input
                                         type="text"
                                         name="firstName"
-                                        value={inputs.firstName || ""}
+                                        value={inputs.firstname || ""}
                                         onChange={handleChange}
                                     />
                                 </label>
@@ -54,7 +62,7 @@ export const SignUp = () => {
                                     <input
                                         type="text"
                                         name="lastName"
-                                        value={inputs.lastName || ""}
+                                        value={inputs.lastname || ""}
                                         onChange={handleChange}
                                     />
                                 </label>
