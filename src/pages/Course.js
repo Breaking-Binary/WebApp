@@ -6,7 +6,7 @@ import "../styles/Home.css";
 import Navbar from "../components/Navbar";
 import "../styles/CourseDisplay.css";
 
-function CourseDisplay() {
+function Course() {
 	const [course_list, setCourseList] = useState([]);
 
 	useEffect(() => {
@@ -61,4 +61,4 @@ function CourseDisplay() {
 	);
 }
 
-export default CourseDisplay;
+export default Course;
