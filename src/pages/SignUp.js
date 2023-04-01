@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 import LoginNavBar from "../components/LoginNavBar";
 import userID from "../hooks/UserID";
 
 export const SignUp = () => {
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({
         firstname: "",
         lastname: "",
@@ -21,7 +23,6 @@ export const SignUp = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(inputs);
         axios
             .post(`http://localhost:4000/api/users`, {
                 //   .post(`${process.env.BACKEND_SERVER_URL}/api/users/`, { (THIS DOESN"T WORK FOR SOME REASON)
@@ -31,7 +32,9 @@ export const SignUp = () => {
                 password: inputs.password,
                 school: inputs.school,
             })
-            .then((r) => {
+            .then((res) => {
+                userID.data = res.data._id
+                navigate("/courses");
             });
     };
 

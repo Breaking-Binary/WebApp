@@ -15,8 +15,6 @@ export default function Login() {
     useEffect(() => {
         Axios.get("http://localhost:4000/api/users").then((res) => {
             setUsers(res.data);
-            console.log(res.data);
-            console.log(res.data[0].firstname)
         });
     }, []);
 
