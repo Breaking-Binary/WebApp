@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import "../styles/CourseDisplay.css";
 import Carousel from "react-bootstrap/Carousel";
 
-function CourseDisplay() {
+function Course() {
 	const [course_list, setCourseList] = useState([]);
 
 	useEffect(() => {
@@ -96,4 +96,4 @@ function CourseDisplay() {
 	);
 }
 
-export default CourseDisplay;
+export default Course;

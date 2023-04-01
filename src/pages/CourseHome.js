@@ -4,7 +4,8 @@ import CourseItem from "../components/CourseItem";
 import Navbar from "../components/Navbar";
 import "../styles/Home.css";
 
-function Home() {
+function CourseHome() {
+  console.log("In the course home");
   const [course_list, setCourseList] = useState([]);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ function Home() {
       setCourseList(res.data);
     });
   }, []);
-  
+
   return (
     <div>
       <Navbar />
@@ -33,4 +34,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default CourseHome;
