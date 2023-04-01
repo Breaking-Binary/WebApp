@@ -179,7 +179,7 @@ function SyllabusForm({ onSubmit }) {
     };
 
     const handleSubmit = async () => {
-      const name = "testy";
+      const name = "testy";    // name is hardcoded, we need to figure out how to link the signup name to this name
       const txtContent = {
         name: name,
         courseName: courseName,
