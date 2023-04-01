@@ -5,7 +5,6 @@ import {getDocument} from "pdfjs-dist";
 import {Document, Page} from "react-pdf";
 import axios from "axios";
 
-
 function SyllabusForm({onSubmit}) {
     const [lectureInfo, setLectureInfo] = useState([]);
     const [evaluationInfo, setEvaluationInfo] = useState([]);
@@ -22,6 +21,7 @@ function SyllabusForm({onSubmit}) {
         const fileReader = new FileReader()
         fileReader.onload = async (event) => {
             const content = event.target.file;
+
             // <Document file={fileContent} options={{ workerSrc: pdfWorker }} />
             const pdf = await getDocument({data: new Uint8Array(content)}).promise;
             const txt = [];

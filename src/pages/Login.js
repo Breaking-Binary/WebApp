@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import LoginNavBar from "../components/LoginNavBar";
+import userID from "../hooks/UserID";
 import Axios from "axios";
 
 export default function Login() {
@@ -35,8 +36,7 @@ export default function Login() {
     };
 
     // Handles submit button press
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = () => {
         loginValidation();
     };
 
