@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/UploadFile.css";
 import { getDocument } from "pdfjs-dist";
-import { Document, Page } from "react-pdf";
 import axios from "axios";
 
 function SyllabusForm({ onSubmit }) {
@@ -21,7 +20,6 @@ function SyllabusForm({ onSubmit }) {
     const fileReader = new FileReader();
     fileReader.onload = async (event) => {
       const content = event.target.file;
-      // <Document file={fileContent} options={{ workerSrc: pdfWorker }} />
       const pdf = await getDocument({ data: new Uint8Array(content) }).promise;
       const txt = [];
       for (let i = 1; i <= pdf.numPages; i++) {
@@ -57,7 +55,7 @@ function SyllabusForm({ onSubmit }) {
 
       // Find all the dates and keywords
       for (const pattern of [...datePatterns, ...keywordPatterns]) {
-        const matches = String(file).matchAll(pattern);
+        const matches = file.matchAll(pattern);
         if (matches) {
           for (const match of matches) {
             if (datePatterns.includes(pattern)) {
@@ -83,7 +81,7 @@ function SyllabusForm({ onSubmit }) {
         const lineStart = file.lastIndexOf("\n", date.index) + 1;
         const lineEnd = file.indexOf("\n", date.index);
         const line = file.slice(lineStart, lineEnd > -1 ? lineEnd : undefined);
-        const keywordMatch = String(line).match(keywordPatterns[0]);
+        const keywordMatch = line.match(keywordPatterns[0]);
         if (keywordMatch) {
           keyword = keywordMatch[0];
         } else {
@@ -102,41 +100,6 @@ function SyllabusForm({ onSubmit }) {
       }
 
       console.log("Dates and keywords found:", output);
-
-      let patternName =
-        /(Professor|Dr\.|Lecturer|Instructor|TA|Teaching Assistant|Dr|Prof\.?)\s+([A-Z][a-z]+ \b[A-Z][a-z]+)/g;
-      let matchName = String(file).matchAll(patternName);
-
-      for (const match of matchName) {
-        console.log(match[1] + ": " + match[2]);
-      }
-
-      let patternEmail = /\b\w+@\w+\.uwo\.ca\b/gi;
-
-      let matchEmail = String(file).matchAll(patternEmail);
-
-      if (matchEmail) {
-        let email = matchEmail[0];
-        console.log("Email: " + email);
-      }
-
-      let patternTime = /(\d{1,2}:\d{2})(am|pm)?/g;
-
-      let matchTime = String(file).matchAll(patternTime);
-
-      for (const match of matchTime) {
-        let time = match[1] + (match[2] ? match[2] : "");
-        console.log("Lecture Time: " + time);
-      }
-
-      let patternLoc = /at\s+([A-Z][a-z]*)(\s[A-Z][a-z]*)?\b/g;
-
-      let matchLoc = String(file).matchAll(patternLoc);
-
-      for (const match of matchLoc) {
-        let location = match[1];
-        console.log("Location: " + location);
-      }
     }
   };
 
@@ -178,14 +141,36 @@ function SyllabusForm({ onSubmit }) {
     setLectureInfo((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (fileContent.trim()) {
-      console.log("File content:", fileContent);
-      const response = await fetch("/api/upload-txt", {
-        method: "POST",
-        body: fileContent,
-      });
+  const handleSubmit = async () => {
+    // e.preventDefault();
+    const name = "Bob is cools";
+    if (!fileContent) {
+      //   alert("Please upload a PDF file.");
+      //   return;
+    }
+
+    const data = {
+      name: name,
+      courseName: courseName,
+      courseCode: courseCode,
+      schoolTerm: schoolTerm,
+      profName: professorName,
+      profEmail: professorEmail,
+      lectureInfo,
+      evaluations: evaluationInfo,
+      content: fileContent,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/courses",
+        data
+      );
+      console.log(response.data);
+      alert("Syllabus information successfully uploaded.");
+    } catch (error) {
+      //console.error(error);
+      alert("An error occurred while processing the syllabus information.");
     }
   };
 
