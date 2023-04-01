@@ -19,7 +19,7 @@ function SyllabusForm({ onSubmit }) {
     const file = event.target.files[0];
     const fileReader = new FileReader();
     fileReader.onload = async (event) => {
-      const content = event.target.file;
+      const content = event.target.result;
       const pdf = await getDocument({ data: new Uint8Array(content) }).promise;
       const txt = [];
       for (let i = 1; i <= pdf.numPages; i++) {
@@ -33,9 +33,6 @@ function SyllabusForm({ onSubmit }) {
       processTextFile(txtContent);
     };
     setShowInfoForm(true);
-    fileReader.readAsArrayBuffer(file);
-
-    // Read the file contents as a string
 
     const datePatterns = [
       /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(\s*,\s*\d{2,4})?\b/gi, // matches dates in the format "Month Day, Year" or "Month Day"
@@ -46,16 +43,13 @@ function SyllabusForm({ onSubmit }) {
       /\b(assignment|quiz|test|exam|lab|midterm)s?\b/gi, // matches any of the listed keywords, with optional pluralization
     ];
 
-    // Process the text data to find events and dates
-    processTextFile(file);
-
-    function processTextFile(file) {
+    function processTextFile(txtContent) {
       const dates = [];
       const events = [];
 
       // Find all the dates and keywords
       for (const pattern of [...datePatterns, ...keywordPatterns]) {
-        const matches = file.matchAll(pattern);
+        const matches = txtContent.matchAll(pattern);
         if (matches) {
           for (const match of matches) {
             if (datePatterns.includes(pattern)) {
@@ -67,20 +61,21 @@ function SyllabusForm({ onSubmit }) {
         }
       }
 
-      // Sort the dates and events by index in the text
       dates.sort((a, b) => a.index - b.index);
       events.sort((a, b) => a.index - b.index);
 
       const output = [];
 
-      // Find the keyword for each date
       for (const date of dates) {
         let keyword = "";
 
         // Look for a keyword on the same line as the date
-        const lineStart = file.lastIndexOf("\n", date.index) + 1;
-        const lineEnd = file.indexOf("\n", date.index);
-        const line = file.slice(lineStart, lineEnd > -1 ? lineEnd : undefined);
+        const lineStart = txtContent.lastIndexOf("\n", date.index) + 1;
+        const lineEnd = txtContent.indexOf("\n", date.index);
+        const line = txtContent.slice(
+          lineStart,
+          lineEnd > -1 ? lineEnd : undefined
+        );
         const keywordMatch = line.match(keywordPatterns[0]);
         if (keywordMatch) {
           keyword = keywordMatch[0];
@@ -95,13 +90,55 @@ function SyllabusForm({ onSubmit }) {
             }
           }
         }
-
         output.push(`${date[0]} - ${keyword}`);
       }
 
       console.log("Dates and keywords found:", output);
+
+      let patternName =
+        /(Professor|Dr\.|Lecturer|Instructor|TA|Teaching Assistant|Dr|Prof\.?)\s+([A-Z][a-z]+ \b[A-Z][a-z]+)/g;
+
+      let matchName = txtContent.matchAll(patternName);
+
+      for (const match of matchName) {
+        console.log(match[1] + ": " + match[2]);
+      }
+
+      let patternEmail = /\b\w+@\w+\.uwo\.ca\b/;
+
+      let matchEmail = txtContent.match(patternEmail);
+
+      if (matchEmail) {
+        let email = matchEmail[0];
+        console.log("Email: " + email);
+      }
+
+      let patternTime = /(\d{1,2}:\d{2})(am|pm)?/g;
+
+      let matchTime = txtContent.matchAll(patternTime);
+
+      for (const match of matchTime) {
+        let time = match[1] + (match[2] ? match[2] : "");
+        console.log("Lecture Time: " + time);
+      }
+
+      let patternLoc = /at\s+([A-Z][a-z]*)(\s[A-Z][a-z]*)?\b/g;
+
+      let matchLoc = txtContent.matchAll(patternLoc);
+
+      for (const match of matchLoc) {
+        let location = match[1];
+        console.log("Location: " + location);
+      }
+
+      const lines = txtContent.split("\n");
+      const lineWithEdition = lines.find((line) => line.includes("edition"));
+
+      if (lineWithEdition) {
+        console.log("Textbook:", lineWithEdition);
+      }
     }
-  };
+  }
 
   const handleAddLecture = () => {
     setLectureInfo((prev) => [
