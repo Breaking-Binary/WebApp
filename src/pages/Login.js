@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import LoginNavBar from "../components/LoginNavBar";
 import Axios from "axios";
 import userID from "../hooks/UserID";
+import alert from "bootstrap/js/src/alert";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -56,10 +57,10 @@ export default function Login() {
         // Checks which action to take depending on input and previous for loop
         // 1. Email wasn't found in database
         if (userIndex === users.length) {
-            console.log("WRONG - remove later");
+            alert("Invalid Username/Password")
             // 2. Incorrect email password match
         } else if (userPW.localeCompare(password) !== 0) {
-            console.log("WRONG - remove later");
+            alert("Invalid Username/Password")
             // 3. Correct password
         } else {
             console.log("CORRECT COMBINATION!!! -- remove later");

@@ -32,12 +32,13 @@ import ForgotPassword from "./pages/ForgotPassword";
 import CourseHome from "./pages/CourseHome";
 import Course from "./pages/Course";
 import Upload from "./pages/Upload";
+import SplashScreen from "./pages/SplashScreen";
 
 function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route exact path="/" element={<Login />} />
+				<Route exact path="/" element={<SplashScreen />} />
 				<Route path="/log-in" element={<Login />} />
 				<Route path="/sign-up" element={<SignUp />} />
 				<Route path="/forgot-password" element={<ForgotPassword />} />
