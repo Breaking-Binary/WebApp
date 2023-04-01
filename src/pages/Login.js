@@ -6,11 +6,11 @@ import userID from "../hooks/UserID";
 import alert from "bootstrap/js/src/alert";
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [users, setUsers] = useState([]);
-
-    const navigate = useNavigate();
 
     // Pulls all user data from database
     useEffect(() => {
