@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import LoginNavBar from "../components/LoginNavBar";
-import userID from "../hooks/UserID";
 import Axios from "axios";
+import userID from "../hooks/UserID";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -15,13 +15,11 @@ export default function Login() {
     useEffect(() => {
         Axios.get("http://localhost:4000/api/users").then((res) => {
             setUsers(res.data);
-            console.log(res.data);
-            console.log("REMOVE THE ABOVE LINE OF CODE BEFORE LAUNCH");
         });
     }, []);
 
     // Handles input changes in text fields
-    const handleInputChange = (event) => {
+    const handleChange = (event) => {
         const target = event.target;
         const value =
             target.type === "customCheck1" ? target.checked : target.value;
@@ -36,14 +34,14 @@ export default function Login() {
     };
 
     // Handles submit button press
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault()
         loginValidation();
     };
 
     // Validates the login
     // Runs immediately after the GET call is made to backend
     const loginValidation = () => {
-        let errors = {};
         let userIndex;
         let userPW = "";
 
@@ -59,14 +57,13 @@ export default function Login() {
         // 1. Email wasn't found in database
         if (userIndex === users.length) {
             console.log("WRONG - remove later");
-            errors["email"] = "No account associated with this email";
             // 2. Incorrect email password match
         } else if (userPW.localeCompare(password) !== 0) {
             console.log("WRONG - remove later");
-            errors["password"] = "Incorrect Email-Password Combination";
             // 3. Correct password
         } else {
             console.log("CORRECT COMBINATION!!! -- remove later");
+            userID.data = users[userIndex]._id
             navigate("/courses");
         }
     };
@@ -100,25 +97,25 @@ export default function Login() {
                                 <input className="form-control"
                                        type="email"
                                        name="email"
-                                       id="login_email"
+                                       id="loginEmail"
                                        placeholder="Enter email"
                                        value={email}
                                        pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+"
-                                       onChange={handleInputChange}
+                                       onChange={handleChange}
                                        required/>
-                                <label className="form-label" htmlFor="login_email">Email</label>
+                                <label className="form-label" htmlFor="loginEmail">Email</label>
                                 <div className="invalid-feedback">Not a valid email.</div>
                             </div>
                             <div className="form-floating mb-3">
                                 <input className="form-control"
                                        type="password"
                                        name="password"
-                                       id="login_password"
+                                       id="loginPassword"
                                        placeholder="Enter password"
                                        value={password}
-                                       onChange={handleInputChange}
+                                       onChange={handleChange}
                                        required/>
-                                <label className="form-label" htmlFor="login_password">Password</label>
+                                <label className="form-label" htmlFor="loginPassword">Password</label>
                                 <div className="invalid-feedback">Please enter a password.</div>
                             </div>
                             <div className="col-12">
@@ -126,9 +123,10 @@ export default function Login() {
                                     <input className="form-check-input"
                                            type="checkbox"
                                            value=""
-                                           id="login_remember_me"
+                                           id="loginRememberMe"
+                                           onChange={handleChange}
                                            formNoValidate="formNoValidate"/>
-                                    <label className="form-check-label" htmlFor="login_remember_me">Remember me</label>
+                                    <label className="form-check-label" htmlFor="loginRememberMe">Remember me</label>
                                 </div>
                             </div>
                             <div className="d-grid">
