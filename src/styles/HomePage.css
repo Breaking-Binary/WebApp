@@ -1,192 +1,194 @@
 /* General Styles */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  font-size: 21px;
-  line-height: 1.5;
-  color: #333;
+    font-family: "Roboto", sans-serif;
+    font-size: 21px;
+    line-height: 1.5;
+    color: #333;
 }
 
 a {
-  color: #333;
-  text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
 
 /* Header */
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  padding: 0 100px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 100px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
 }
 
 nav a {
-  margin-left: auto;
-  margin-right: 0;
-  margin-left: 75px;
+    margin-right: 0;
+    margin-left: 75px;
 }
 
 /* Hero Section */
 
 .hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 50vh;
-  padding-left: 7vw;
-  /*background-color: #f8f8f8;*/
-  /*background-image: url(Images/whiteGradient.jpg);*/
-  background-size: 44vw 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50vh;
+    padding-left: 7vw;
+    /*background-color: #f8f8f8;*/
+    /*background-image: url(Images/whiteGradient.jpg);*/
+    background-size: 44vw 50vh;
 }
 
 .hero-text {
-  max-width: 800px;
+    max-width: 800px;
 }
 
 .hero-text h1 {
-  font-size: 4rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .hero-text p {
-  font-size: 1.5rem;
-  margin-bottom: 30px;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
 }
 
 .cta-button {
-  display: inline-block;
-  padding: 10px 50px;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 100px;
-  transition: background-color 0.2s ease;
+    display: inline-block;
+    padding: 10px 50px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 100px;
+    transition: background-color 0.2s ease;
 }
 
 .cta-button:hover {
-  background-color: #0069d9;
+    background-color: #0069d9;
 }
 
 .hero-image img {
-  margin-top: 0.6vh;
-  width: 56vw;
-  height: 50vh;
+    margin-top: 0.6vh;
+    width: 56vw;
+    height: 50vh;
 }
 
 /* Features Section */
 
 .features {
-  padding: 120px;
-  background-color: #fff;
+    padding: 120px;
+    background-color: #fff;
 }
 
 .features h2 {
-  text-align: center;
-  font-size: 4rem;
-  font-weight: bold;
-  margin-bottom: 50px;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 50px;
 }
 
 .feature-cards {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .feature-card {
-  width: calc(33.33% - 30px);
-  padding: 30px;
-  background-color: #f8f8f8;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+    width: calc(33.33% - 30px);
+    padding: 30px;
+    background-color: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .feature-card h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .feature-card p {
-  font-size: 1.25rem;
-  margin-bottom: 2.4vh;
+    font-size: 1.25rem;
+    margin-bottom: 2.4vh;
 }
 
 .contact {
-  background-color: #f5f5f5;
-  padding: 50px 0;
+    background-color: #f5f5f5;
+    padding: 50px 0;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+
 }
 
 .contact h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 .contact p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
 }
 
 .contact p a {
-  color: #007bff;
+    color: #007bff;
 }
 
 .contact p a:hover {
-  text-decoration: none;
-  color: #0069d9;
+    text-decoration: none;
+    color: #0069d9;
 }
 
 .contact form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .contact label {
-  display: block;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
 .contact input[type="text"],
 .contact input[type="email"],
 .contact textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
 }
 
 .contact textarea {
-  height: 150px;
+    height: 150px;
 }
 
 .contact button[type="submit"] {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .contact button[type="submit"]:hover {
-  background-color: #0069d9;
+    background-color: #0069d9;
 }
