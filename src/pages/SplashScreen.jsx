@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {useNavigate, useParams} from "react-router-dom";
 import 'bootstrap'
-import './HomePage.css'
+import '../styles/HomePage.css'
 
 export default function SplashScreen() {
     const navigate = useNavigate();
@@ -12,7 +12,6 @@ export default function SplashScreen() {
                 <nav>
                     <a href="#">Home</a>
                     <a href="#featurelink">Features</a>
-                    <a href="#contactlink">Contact Us</a>
                 </nav>
                 <nav>
                     <a href="http://localhost:3000/log-in" id="login" className="cta-button">Login</a>
@@ -25,7 +24,7 @@ export default function SplashScreen() {
                     <a href="http://localhost:3000/sign-up" className="cta-button">Sign up</a>
                 </div>
                 <div className="hero-image">
-                    <img src="Images/hero-image2.jpg" alt="hero"/>
+                    <img src="Images/hero-image.jpg" alt="hero"/>
                 </div>
             </section>
             <section className="features">
