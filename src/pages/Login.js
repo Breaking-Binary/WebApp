@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import LoginNavBar from "../components/LoginNavBar";
-import userID from "../hooks/UserID";
 import Axios from "axios";
+import userID from "../hooks/UserID";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -16,6 +16,7 @@ export default function Login() {
         Axios.get("http://localhost:4000/api/users").then((res) => {
             setUsers(res.data);
             console.log(res.data);
+            console.log(res.data[0].firstname)
         });
     }, []);
 
@@ -43,7 +44,6 @@ export default function Login() {
     // Validates the login
     // Runs immediately after the GET call is made to backend
     const loginValidation = () => {
-        let errors = {};
         let userIndex;
         let userPW = "";
 
@@ -59,14 +59,13 @@ export default function Login() {
         // 1. Email wasn't found in database
         if (userIndex === users.length) {
             console.log("WRONG - remove later");
-            errors["email"] = "No account associated with this email";
             // 2. Incorrect email password match
         } else if (userPW.localeCompare(password) !== 0) {
             console.log("WRONG - remove later");
-            errors["password"] = "Incorrect Email-Password Combination";
             // 3. Correct password
         } else {
             console.log("CORRECT COMBINATION!!! -- remove later");
+            userID.data = users[userIndex]._id
             navigate("/courses");
         }
     };
