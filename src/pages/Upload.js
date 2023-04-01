@@ -446,4 +446,5 @@ function SyllabusForm({ onSubmit }) {
     </div>
   );
 }
+
 export default SyllabusForm;
