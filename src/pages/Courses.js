@@ -12,7 +12,7 @@ function Home() {
       setCourseList(res.data);
     });
   }, []);
-
+  
   return (
     <div>
       <Navbar />
