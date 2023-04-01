@@ -1,44 +1,44 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #afafff;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #afafff;
 }
 
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
-  border: 2px solid rgb(176, 176, 176);
-  border-radius: 10px;
-  padding: 30px 70px 35px 70px;
-  width: 50%;
-  animation-name: float-in;
-  box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.4);
-  max-height: calc(100vh - 100px);
-  overflow-y: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(176, 176, 176);
+	border-radius: 10px;
+	padding: 30px 70px 35px 70px;
+	width: 50%;
+	animation-name: float-in;
+	box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.4);
+	max-height: calc(100vh - 100px);
+	overflow-y: auto;
 }
 
 .container h2 {
-  font-size: 35px;
-  text-align: center;
-  padding:10px;
+	font-size: 35px;
+	text-align: center;
+	padding: 10px;
 }
 
 .container h3 {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  font-size: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 20px;
 }
 
 .container label {
-  display: block;
-  margin-bottom: 5px;
+	display: block;
+	margin-bottom: 5px;
 }
 
 .container input[type="text"],
@@ -48,129 +48,129 @@ body {
 .container input[type="number"],
 .container select,
 .container input[type="file"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  font-size: 16px;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	font-size: 16px;
 }
 
 .container input[type="file"] {
-  height: 40px;
+	height: 40px;
 }
 
 .container select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='4'><path d='M0 0h8L4 4z'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 8px 4px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='4'><path d='M0 0h8L4 4z'/></svg>");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	background-size: 8px 4px;
 }
 
 .container button {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 20px;
+	background-color: #4caf50;
+	color: #fff;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	margin-bottom: 20px;
 }
 
 .container input[type="eval-button"] {
-  background-color: orange;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  padding-bottom: 15px;
+	background-color: orange;
+	color: #fff;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	padding-bottom: 15px;
 }
 
 .container input[type="submit"] {
-  display: block;
-  margin: 0 auto;
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 15px;
+	display: block;
+	margin: 0 auto;
+	background-color: #4caf50;
+	color: #fff;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	margin-bottom: 15px;
 }
 
 .container button:hover {
-  background-color: #3e8e41;
+	background-color: #3e8e41;
 }
 
-  .container .lecture-info,
-  .container .evaluation-info {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
+.container .lecture-info,
+.container .evaluation-info {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
 
-  .container .lecture-info label,
-  .container .evaluation-info label {
-    display: inline-block;
-    width: 20%;
-  }
+.container .lecture-info label,
+.container .evaluation-info label {
+	display: inline-block;
+	width: 20%;
+}
 
-  .container .lecture-info input,
-  .container .evaluation-info input {
-    width: 75%;
-  }
+.container .lecture-info input,
+.container .evaluation-info input {
+	width: 75%;
+}
 
-  .container .lecture-info button,
-  .container .evaluation-info button {
-    margin-top: 10px;
-  }
+.container .lecture-info button,
+.container .evaluation-info button {
+	margin-top: 10px;
+}
 
-  .container .evaluation-info .remove-button {
-    background-color: #f44336;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    float: right;
-  }
+.container .evaluation-info .remove-button {
+	background-color: #f44336;
+	color: #fff;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	float: right;
+}
 
-  .container .evaluation-info .remove-button:hover {
-    background-color: #f44336;
-  }
+.container .evaluation-info .remove-button:hover {
+	background-color: #f44336;
+}
 
-  .container .evaluation-info .remove-button:focus {
-    outline: none;
-  }
+.container .evaluation-info .remove-button:focus {
+	outline: none;
+}
 
-  button:not([type="submit"]) {
-    background-color: orange;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.2s ease-in-out;
-  }
+button:not([type="submit"]) {
+	background-color: orange;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	transition: box-shadow 0.2s ease-in-out;
+}
 
-  input[type="text"]:hover,
-  button:not([type="submit"]):hover {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  }
+input[type="text"]:hover,
+button:not([type="submit"]):hover {
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 
-  input[type="text"]:focus,
-  button:not([type="submit"]):focus {
-    outline: none;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  }
+input[type="text"]:focus,
+button:not([type="submit"]):focus {
+	outline: none;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
 
-  @media screen and (max-width: 768px) {
-    .container {
-      width: 80%;
-    }
-  }
+@media screen and (max-width: 768px) {
+	.container {
+		width: 80%;
+	}
+}
