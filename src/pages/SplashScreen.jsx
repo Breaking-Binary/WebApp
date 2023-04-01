@@ -20,11 +20,12 @@ export default function SplashScreen() {
             <section className="hero">
                 <div className="hero-text">
                     <h1>Welcome to Smart Desk</h1>
+
                     <p id="featurelink">The all in one education hub</p>
                     <a href="http://localhost:3000/sign-up" className="cta-button">Sign up</a>
                 </div>
                 <div className="hero-image">
-                    <img src="Images/hero-image.jpg" alt="hero"/>
+                    <img src={require('../images/rizzakusin.png')} className="App-logo" alt="hero"/>
                 </div>
             </section>
             <section className="features">
@@ -75,6 +76,7 @@ export default function SplashScreen() {
             {/*        </form>*/}
             {/*    </div>*/}
             {/*</section>*/}
+
         </div>
     )
 
